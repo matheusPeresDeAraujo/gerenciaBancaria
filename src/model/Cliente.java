@@ -15,6 +15,8 @@ public class Cliente {
 	private String telefone;
 	private String celular;
 	
+	private List<Conta> contas = new ArrayList<>();
+	
 	public Cliente(String nome, Date nascimento, String cpf, Date cadastro, double renda, Endereco endereco, String telefone,
 			String celular) {
 		super();
@@ -31,6 +33,14 @@ public class Cliente {
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<Conta> getContas() {
+		return contas;
+	}
+
+	public void setContas(Conta conta) {
+		this.contas.add(conta);
 	}
 
 	public String getNome() {
@@ -126,10 +136,20 @@ public class Cliente {
 
 	@Override
 	public String toString() {
+		List <String> teste = new ArrayList();
+		for(int i = 0; i<contas.size();i++){
+			for(int j = 0; j<contas.get(i).getClientes().size();j++){
+
+				teste.add(contas.get(i).getId()+" - "+contas.get(i).getClientes().get(j).getNome());
+			}
+		}
 		return "Cliente [nome=" + nome + ", nascimento=" + nascimento + ", cpf=" + cpf + ", cadastro=" + cadastro
 				+ ", renda=" + renda + ", endereco=" + endereco + ", telefone=" + telefone + ", celular=" + celular
-				+ "]";
+				+ "\n, "  + teste +"]";
+				
 	}
+
+	
 
 	
 }

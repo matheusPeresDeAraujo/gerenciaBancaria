@@ -3,18 +3,41 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Conta {
+import controller.InterfaceConta;
+
+public abstract class Conta implements InterfaceConta{
+	
+	protected long id;
+	protected String tipo;
 	protected float saldo;
+	protected float movimentacao;
+	
 	protected List<Cliente> clientes = new ArrayList();
 	protected List<Operacao> operacoes = new ArrayList();
 	
-	public Conta(float saldo) {
-		super();
-		this.saldo = saldo;
+	
+	public long getId() {
+		return id;
 	}
 
-	public Conta() {
-		super();
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public float getMovimentacao() {
+		return movimentacao;
+	}
+
+	public void setMovimentacao(float movimentacao) {
+		this.movimentacao = movimentacao;
 	}
 
 	public float getSaldo(){
@@ -58,9 +81,4 @@ public abstract class Conta {
 		this.operacoes.add(operacao);
 	}
 
-	@Override
-	public String toString() {
-		return "Conta [saldo=" + saldo + ", clientes=" + clientes + ", operacoes=" + operacoes + "]";
-	}
-	
 }

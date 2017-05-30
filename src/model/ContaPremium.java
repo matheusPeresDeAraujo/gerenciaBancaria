@@ -1,8 +1,14 @@
 package model;
 
-public class ContaPremium extends Conta{
-	private float chequeEspecial;
+import controller.InterfaceConta;
 
+public class ContaPremium extends Conta{
+	
+	private float chequeEspecial;
+	private String tipo = "Conta Premium";
+	private float movimentacao = 100000;
+
+	
 	public ContaPremium(float saldo, float chequeEspecial) {
 		super();
 		if (chequeEspecial > 100000){
@@ -17,6 +23,22 @@ public class ContaPremium extends Conta{
 		super();
 	}
 	
+	public float getMovimentacao() {
+		return movimentacao;
+	}
+
+	public void setMovimentacao(float movimentacao) {
+		this.movimentacao = movimentacao;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public float getChequeEspecial() {
 		return chequeEspecial;
 	}
@@ -46,10 +68,22 @@ public class ContaPremium extends Conta{
 	}
 	
 	public boolean Transferencia(float saque){
-		saque += 4.0f;
+		
 		if(!Saque(saque)){
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean Investimento(float investimento){
+		if(!Saque(investimento)){
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "Conta Premium [saldo= " + saldo + "]\n";
 	}
 }
